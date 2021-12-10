@@ -14,11 +14,17 @@ const Tab = createBottomTabNavigator();
 export default function AppNavigator(){
     return(
         <NavigationContainer>
-            <Tab.Navigator initialRouteName="Home" headerMode="none">
+            <Tab.Navigator
+            initialRouteName="Home"
+            headerMode="none"
+            tabBarOptions={{
+                activeBackgroundColor: '#0c0c0c',
+                inactiveBackgroundColor: '#000',
+            }}>
                 <Tab.Screen name="Home" component={HomeScreen} />
                 <Tab.Screen name="Discover" component={DiscoverScreen} />
-                <Tab.Screen name="Settings" component={SettingScreen} />
                 <Tab.Screen name="Shop" component={ShopScreen} />
+                <Tab.Screen name="Settings" component={SettingScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     )
