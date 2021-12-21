@@ -1,10 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Text, View, ScrollView, TextInput} from 'react-native';
-import {SearchBar} from 'react-native-elements';
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import {shopStyle} from './shop.style';
+import p3 from '../../../assets/p3.jpg';
 
 export default function ShopScreen() {
   return (
@@ -23,29 +22,14 @@ export default function ShopScreen() {
         </View>
         <View style={shopStyle.cardContainer}>
           <View style={shopStyle.cardHorizontal}>
-            <View style={shopStyle.cardLeft}>
-              <Text style={shopStyle.cardTitleText}>Leonardo da Vinci</Text>
-              <Text style={shopStyle.cardDescriptionText}>Buy Leonardo's works with high resolution</Text>
-            </View>
-            <View style={shopStyle.cardRight}>
-              <Text>Text 2</Text>
-            </View>
-          </View>
-          <View style={shopStyle.cardHorizontal}>
-            <View style={shopStyle.cardLeft}>
-              <Text>Text 1</Text>
-            </View>
-            <View style={shopStyle.cardRight}>
-              <Text>Text 2</Text>
-            </View>
-          </View>
-          <View style={shopStyle.cardHorizontal}>
-            <View style={shopStyle.cardLeft}>
-              <Text>Text 1</Text>
-            </View>
-            <View style={shopStyle.cardRight}>
-              <Text>Text 2</Text>
-            </View>
+            <TouchableOpacity style={shopStyle.cardLeft}>
+                <Text style={shopStyle.cardTitleText}>Leonardo da Vinci</Text>
+                <Text style={shopStyle.cardDescriptionText}>Buy Leonardo's works with high resolution</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={shopStyle.cardLeft}>
+                <Text style={shopStyle.cardTitleText}>Van Gogh</Text>
+                <Text style={shopStyle.cardDescriptionText}>Buy Van Gogh's works with high resolution</Text>
+            </TouchableOpacity>
           </View>
         </View>
     </ScrollView>

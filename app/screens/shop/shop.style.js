@@ -33,24 +33,15 @@ export const shopStyle = StyleSheet.create({
     },
     cardHorizontal:{
         flexDirection: 'row',
-        marginBottom: '5%'
+        justifyContent: 'center'
     },
     cardLeft: {
-        width: '40%',
+        width: '50%',
         height: 160,
-        flex: 1,
-        marginRight: '5%',
         borderRadius: 12,
         borderWidth: 0.3,
-        borderColor: '#fff'
-    },
-    cardRight: {
-        width: '40%',
-        height: 160,
-        flex: 1,
-        borderRadius: 12,
-        borderWidth: 0.3,
-        borderColor: '#fff'
+        borderColor: '#fff',
+        margin: '2%'
     },
     cardTitleText: {
         color: '#fff',
