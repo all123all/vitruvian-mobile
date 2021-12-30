@@ -1,35 +1,71 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Text, View, ScroolView, ImageBackground, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, ScrollView, Modal, Image, Dimensions, TouchableOpacity} from 'react-native';
+import ImageZoom from 'react-native-image-pan-zoom';
 import {homeStyle} from './home.style'
 import ImgTest from '../../../assets/p1.jpg'
 import ImgGradient from '../../../assets/gradient.png'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function HomeScreen() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const images = [{
+    uri: "https://uploads7.wikiart.org/images/william-adolphe-bouguereau/elegy-1899.jpg",
+  }]
   return (
-    <SafeAreaView>
-      <ImageBackground
-      source={ImgTest}
-      resizeMode="cover"
-      style={homeStyle.ImgTest}>
-        <ImageBackground
-        source={ImgGradient}
-        resizeMode="cover"
-        style={homeStyle.ImgGradient}>
-          <View style={homeStyle.bodyContainer}>
-            <View style={homeStyle.expandImage}>
-              <TouchableOpacity>
-                <Text style={homeStyle.expandImageText}>Click here to see full image</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={homeStyle.mainCard}>
-              <Text style={homeStyle.titleArtNameText}>Elegy</Text>
-              <Text style={homeStyle.titleArtistNameText}>William-Adolphe Bouguereau</Text>
-            </View>
+    <ScrollView style={homeStyle.scrollView}>
+      <Modal
+      animationType='fade'
+      visible={modalVisible}
+      onRequestClose={() => {
+        setModalVisible(!modalVisible);
+      }}>
+        {/* <View style={homeStyle.fullImgView}>
+          <View style={homeStyle.modalView}>
+            <Image
+            source={ImgTest}
+            style={homeStyle.fullImg}
+            resizeMode='repeat'/>
           </View>
-        </ImageBackground>
-      </ImageBackground>
-    </SafeAreaView>
+        </View> */}
+        <ImageZoom
+          cropWidth={Dimensions.get('window').width}
+          cropHeight={Dimensions.get('window').height}
+          imageWidth={Dimensions.get('window').width}
+          imageHeight={Dimensions.get('window').height}
+          enableSwipeDown={true}
+          onSwipeDown={() => setModalVisible(false)}
+        >
+          <Image
+        style={{
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
+        }}
+        source={{
+          uri:
+          "https://uploads7.wikiart.org/images/william-adolphe-bouguereau/elegy-1899.jpg",
+        }}
+      />
+        </ImageZoom>
+      </Modal>
+      {/* <ImageView
+        images={images}
+        imageIndex={0}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      /> */}
+        
+      <View style={homeStyle.bodyView}>
+        <TouchableOpacity style={homeStyle.imgPanel}
+        onPress={() => setModalVisible(true)}>
+          <Image
+          style={homeStyle.img}
+          source={ImgTest}/>
+        </TouchableOpacity>
+        <Text style={homeStyle.imgPanelText}>Click the image to see full</Text>
+        <Text style={homeStyle.headerTextName}>Elegy</Text>
+        <Text style={homeStyle.headerTextDesc}>William-Adolphe Bouguereau</Text>
+        <Text style={homeStyle.headerTextInfo}>(French pronunciation: ​[wijam.adɔlf buɡ(ə)ʁo]; 30 November 1825 – 19 August 1905) was a French academic painter. In his realistic genre paintings he used mythological themes, making modern interpretations of classical subjects, with an emphasis on the female human body. During his life he enjoyed significant popularity in France and the United States, was given numerous official honors, and received top prices for his work. As the quintessential salon painter of his generation, he was reviled by the Impressionist avant-garde. By the early twentieth century, Bouguereau and his art fell out of favor with the public, due in part to changing tastes. In the 1980s, a revival of interest in figure painting led to a rediscovery of Bouguereau and his work. Throughout the course of his life, Bouguereau executed 822 known finished paintings, although the whereabouts of many are still unknown. </Text>
+      </View>
+    </ScrollView>
   );
 }

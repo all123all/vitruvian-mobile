@@ -6,16 +6,26 @@ import HomeScreen from './screens/home/home.screen';
 import DiscoverScreen from './screens/discover/discover.screen';
 import SettingScreen from './screens/settings/settings.screen';
 import ShopScreen from './screens/shop/shop.screen';
+import LoginScreen from './screens/login/login.screen';
 
 const { Navigator, Screen } = createStackNavigator();
 const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-
-export default function AppNavigator(){
+export default function StackScreen(){
     return(
         <NavigationContainer>
+            <Stack.Navigator initialRouteName="Login" headerMode="nome">
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="AppNavigator" component={AppNavigator}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+const Tab = createBottomTabNavigator();
+function AppNavigator(){
+    return(
+        <NavigationContainer independent={true}>
             <Tab.Navigator
-            initialRouteName="Home"
             headerMode="none"
             tabBarOptions={{
                 activeBackgroundColor: '#0c0c0c',

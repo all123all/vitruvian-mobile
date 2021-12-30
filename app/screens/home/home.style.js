@@ -1,42 +1,55 @@
 import { StyleSheet } from "react-native";
 
 export const homeStyle = StyleSheet.create({
-    ImgTest: {
-        width: '100%',
-        height: '100%',
+    scrollView: {
+        flex: 1,
+        backgroundColor: '#000',
     },
-    ImgGradient: {
-        width: '100%',
-        height: '100%',
+    bodyView: {
     },
-    bodyContainer: {
-        alignItems: 'center',
-        textAlign: 'center',
-        display: 'flex',
+    imgPanel: {
+        marginTop: 33,
+        width: '99%',
+        backgroundColor: '#c2c2c2',
+        height: 200,
+        alignSelf: 'center'
     },
-    expandImage: {
-        alignItems: 'center',
-        alignContent: 'center',
-        textAlign: 'center',
-        height: '50%'
+    img: {
+        height: 200
     },
-    expandImageText: {
-        color: 'white',
+    imgZoom: {
+        width: '1000%',
+    },
+    imgPanelText: {
+        color: '#fff',
         alignSelf: 'center',
-        alignItems: 'flex-end'
+        fontSize: 12,
+        marginTop: '2%'
     },
-    mainCard: {
-        justifyContent: 'center',
-        alignContent: 'center',
-        textAlign: 'center',
-        height: '50%'
+    headerTextName: {
+        color: '#fff',
+        fontSize: 35,
+        marginLeft: '2%',
     },
-    titleArtNameText: {
-        color: 'white',
-        fontSize: 24
+    headerTextDesc: {
+        color: '#fff',
+        fontSize: 18,
+        marginLeft: '2%',
     },
-    titleArtistNameText: {
-        color: 'white',
-        fontSize: 14
+    headerTextInfo: {
+        color: '#fff',
+        fontSize: 15,
+        marginTop: '5%',
+        marginLeft: '2%',
+        marginBottom: '5%',
+    },
+    fullImgView: {
+
+    },
+    modalView: {
+
+    },
+    fullImg: {
+        
     },
 })
