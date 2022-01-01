@@ -7,6 +7,7 @@ import DiscoverScreen from './screens/discover/discover.screen';
 import SettingScreen from './screens/settings/settings.screen';
 import ShopScreen from './screens/shop/shop.screen';
 import LoginScreen from './screens/login/login.screen';
+import RegisterScreen from './screens/register/register.screen';
 
 const { Navigator, Screen } = createStackNavigator();
 const Stack = createStackNavigator();
@@ -15,6 +16,7 @@ export default function StackScreen(){
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Login" headerMode="nome">
                 <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Register" component={RegisterScreen} />
                 <Stack.Screen name="AppNavigator" component={AppNavigator}/>
             </Stack.Navigator>
         </NavigationContainer>
