@@ -42,7 +42,7 @@ export default function HomeScreen() {
         }}
         source={{
           uri:
-          "https://uploads7.wikiart.org/images/william-adolphe-bouguereau/elegy-1899.jpg",
+          "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
         }}
       />
         </ImageZoom>
