@@ -1,65 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import { Text, View, ScrollView, Modal, Image, Dimensions, TouchableOpacity} from 'react-native';
-import ImageZoom from 'react-native-image-pan-zoom';
+import ImageViewer from 'react-native-image-zoom-viewer';
 import {homeStyle} from './home.style'
 import ImgTest from '../../../assets/p1.jpg'
 import ImgGradient from '../../../assets/gradient.png'
+import api from '../../api';
 
 export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const images = [{
-    uri: "https://uploads7.wikiart.org/images/william-adolphe-bouguereau/elegy-1899.jpg",
+    uri: "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
   }]
+  const imagesZoom = [{
+    url: "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
+    props: {
+         headers: 'This is the title'
+    }
+}]
   return (
     <ScrollView style={homeStyle.scrollView}>
       <Modal
-      animationType='fade'
-      visible={modalVisible}
-      onRequestClose={() => {
-        setModalVisible(!modalVisible);
-      }}>
-        {/* <View style={homeStyle.fullImgView}>
-          <View style={homeStyle.modalView}>
-            <Image
-            source={ImgTest}
-            style={homeStyle.fullImg}
-            resizeMode='repeat'/>
-          </View>
-        </View> */}
-        <ImageZoom
-          cropWidth={Dimensions.get('window').width}
-          cropHeight={Dimensions.get('window').height}
-          imageWidth={Dimensions.get('window').width}
-          imageHeight={Dimensions.get('window').height}
-          enableSwipeDown={true}
-          onSwipeDown={() => setModalVisible(false)}
-        >
-          <Image
-        style={{
-          width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
-        }}
-        source={{
-          uri:
-          "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
-        }}
-      />
-        </ImageZoom>
-      </Modal>
-      {/* <ImageView
-        images={images}
-        imageIndex={0}
+        animationType='fade'
         visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      /> */}
-        
+        onRequestClose={() => {
+          setModalVisible(!modalVisible)}}>
+        <ImageViewer
+          imageUrls={imagesZoom}
+        />
+      </Modal>        
       <View style={homeStyle.bodyView}>
         <TouchableOpacity style={homeStyle.imgPanel}
         onPress={() => setModalVisible(true)}>
           <Image
           style={homeStyle.img}
-          source={ImgTest}/>
+          source={images}/>
         </TouchableOpacity>
         <Text style={homeStyle.imgPanelText}>Click the image to see full</Text>
         <Text style={homeStyle.headerTextName}>Elegy</Text>
