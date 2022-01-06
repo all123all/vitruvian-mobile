@@ -1,5 +1,7 @@
+//I'll need to make some 'LOADING SCREEN' to not allow the user to see the black screen while the server returns the information
+//Also, note that error: //I'll need to make some 'LOADING SCREEN' to not allow the user to see the black screen while the server returns the information
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, Component} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import { Text, View, ScrollView, Modal, Image, Dimensions, TouchableOpacity} from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import {homeStyle} from './home.style'
@@ -9,15 +11,25 @@ import api from '../../api';
 
 export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [artistDesc, setArtistDesc] = useState({});
   const images = [{
-    uri: "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
+    uri: artistDesc.image
   }]
   const imagesZoom = [{
-    url: "https://uploads8.wikiart.org/00339/images/henri-pierre-picou/picou-henri-pierre-mark-antony-and-cleopatra-aboard-an-egyptian-barge-1891.jpg",
+    url: artistDesc.image,
     props: {
          headers: 'This is the title'
     }
-}]
+  }]
+
+  //The API will use the 'contentId' to pick the artist. In this example the '185307' refers to Jackson Pollock
+  //in this case i'll only need to let the user choose the 'contentId' he prefer
+  const getInfo = async () => {
+    const {data} = await api.get('Painting/ImageJson/185307')
+    setArtistDesc(data);
+  }
+  getInfo();
+
   return (
     <ScrollView style={homeStyle.scrollView}>
       <Modal
@@ -37,9 +49,9 @@ export default function HomeScreen() {
           source={images}/>
         </TouchableOpacity>
         <Text style={homeStyle.imgPanelText}>Click the image to see full</Text>
-        <Text style={homeStyle.headerTextName}>Elegy</Text>
-        <Text style={homeStyle.headerTextDesc}>William-Adolphe Bouguereau</Text>
-        <Text style={homeStyle.headerTextInfo}>(French pronunciation: ​[wijam.adɔlf buɡ(ə)ʁo]; 30 November 1825 – 19 August 1905) was a French academic painter. In his realistic genre paintings he used mythological themes, making modern interpretations of classical subjects, with an emphasis on the female human body. During his life he enjoyed significant popularity in France and the United States, was given numerous official honors, and received top prices for his work. As the quintessential salon painter of his generation, he was reviled by the Impressionist avant-garde. By the early twentieth century, Bouguereau and his art fell out of favor with the public, due in part to changing tastes. In the 1980s, a revival of interest in figure painting led to a rediscovery of Bouguereau and his work. Throughout the course of his life, Bouguereau executed 822 known finished paintings, although the whereabouts of many are still unknown. </Text>
+        <Text style={homeStyle.headerTextName}>{artistDesc.title}</Text>
+        <Text style={homeStyle.headerTextDesc}>{artistDesc.artistName}</Text>
+        <Text style={homeStyle.headerTextInfo}>{artistDesc.description}</Text>
       </View>
     </ScrollView>
   );
