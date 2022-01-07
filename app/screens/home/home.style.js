@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const homeStyle = StyleSheet.create({
+    loadingScreen: {
+        flex: 1,
+        backgroundColor: '#000',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     scrollView: {
         flex: 1,
         backgroundColor: '#000',

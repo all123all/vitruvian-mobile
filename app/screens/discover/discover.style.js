@@ -36,9 +36,24 @@ export const discoverStyle = StyleSheet.create({
         marginBottom: '3%'
     },
     flatListNest: {
-        marginBottom: '10%'
+        marginBottom: '10%',
+        // justifyContent: 'center'
     },
     flatListText: {
-        color: '#fff'
+        color: '#fff',
+        fontSize: 24
+    },
+    flatListView: {
+        height: 100,
+        backgroundColor: '#696969',
+        marginBottom: 15,
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '90%',
+        alignSelf: 'center'
+    },
+    flatListImage: {
+
     }
 })

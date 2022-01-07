@@ -35,7 +35,7 @@ function AppNavigator(){
             }}>
                 <Tab.Screen name="Home" component={HomeScreen} />
                 <Tab.Screen name="Discover" component={DiscoverScreen} />
-                <Tab.Screen name="Shop" component={ShopScreen} />
+                {/* <Tab.Screen name="Shop" component={ShopScreen} /> */}
                 <Tab.Screen name="Settings" component={SettingScreen} />
             </Tab.Navigator>
         </NavigationContainer>
