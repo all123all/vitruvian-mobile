@@ -44,10 +44,13 @@ export const discoverStyle = StyleSheet.create({
         fontSize: 24
     },
     flatListView: {
-        height: 100,
-        backgroundColor: '#696969',
+        height: 70,
+        backgroundColor: '#000',
         marginBottom: 15,
-        borderRadius: 50,
+        borderRadius: 15,
+        borderColor: '#fff',
+        borderStyle: 'solid',
+        borderWidth: 1,
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
